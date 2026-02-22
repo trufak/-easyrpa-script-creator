@@ -1,0 +1,35 @@
+# Директория зависимостей
+node_modules/
+
+# Директория сборки
+dist/
+build/
+out/
+
+# Файлы окружения
+.env
+.env.local
+.env.*.local
+
+# Логи
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Тестовые директории
+coverage/
+.nyc_output/
+
+# Редакторы и IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# TypeScript
+*.tsbuildinfo
+
+.npmrc

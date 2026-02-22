@@ -1,0 +1,31 @@
+{
+  "name": "@easyrpa/script-creator",
+  "description": "Pyton script creator for easy rpa",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trufak/-easyrpa-script-creator.git"
+  },
+  "author": "trufak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trufak/-easyrpa-script-creator/issues"
+  },
+  "homepage": "https://github.com/trufak/-easyrpa-script-creator#readme",
+  "private": false,
+  "keywords": [
+    "easyrpa",
+    "script"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.3.0"
+  },
+  "files": ["dist", "package.json"]
+}
