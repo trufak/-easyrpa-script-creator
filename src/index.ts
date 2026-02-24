@@ -41,12 +41,12 @@ export class ScriptCreator implements IScriptCreator {
 
   constructor(
     handleGetCollections: ()=>Promise<CollectionType[]>,
-    config: ScriptCreatorConfig
+    config?: ScriptCreatorConfig
   ) {
-    this.logDebugVariablesPath = config.logDebugVariablesPath;
-    this.metaData = config.metaData;
-    this.isDebugMode = config.isDebugMode;
-    this.isRunMode = config.isRunMode;
+    this.logDebugVariablesPath = config?.logDebugVariablesPath;
+    this.metaData = config?.metaData;
+    this.isDebugMode = config?.isDebugMode;
+    this.isRunMode = config?.isRunMode;
     this.variablesNames = {
       nodesVariableName: "nodes",
       containerDataName: "container_data",
@@ -54,7 +54,7 @@ export class ScriptCreator implements IScriptCreator {
       inputDictName: "input_dict",
       inHandlesName: "in_handles",
       defaultScriptName: "script.py",
-      ...(config.variablesNames || {}),
+      ...(config?.variablesNames || {}),
     };
     this.handleGetCollections = handleGetCollections;
   }
