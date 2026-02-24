@@ -15,11 +15,6 @@ import {
 import { getSubFlowName, normalize } from "./utils";
 
 export interface IScriptCreator {
-  metaData?: MetaDataType;
-  isDebugMode?: boolean;
-  isRunMode?: boolean;
-
-  handleGetCollections: ()=>Promise<CollectionType[]>;  
   createScript(
     dirPath: string,
     nodes: ExternalDataNodeType[],
