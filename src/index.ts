@@ -15,11 +15,11 @@ import {
 import { getSubFlowName, normalize } from "./utils";
 
 export interface IScriptCreator {
-  collections: CollectionType[];
   metaData?: MetaDataType;
   isDebugMode?: boolean;
   isRunMode?: boolean;
 
+  handleGetCollections: ()=>Promise<CollectionType[]>;  
   createScript(
     dirPath: string,
     nodes: ExternalDataNodeType[],
@@ -37,15 +37,15 @@ export type ScriptCreatorConfig = {
 }
 
 export class ScriptCreator implements IScriptCreator {
-  collections: CollectionType[];
   metaData?: MetaDataType;
   isDebugMode?: boolean;
   isRunMode?: boolean;
   variablesNames: VariablesNamesType;
   logDebugVariablesPath?: string;
+  handleGetCollections: ()=>Promise<CollectionType[]>;  
 
   constructor(
-    collections: CollectionType[],
+    handleGetCollections: ()=>Promise<CollectionType[]>,
     config: ScriptCreatorConfig
   ) {
     this.logDebugVariablesPath = config.logDebugVariablesPath;
@@ -61,7 +61,7 @@ export class ScriptCreator implements IScriptCreator {
       defaultScriptName: "script.py",
       ...(config.variablesNames || {}),
     };
-    this.collections = collections;
+    this.handleGetCollections = handleGetCollections;
   }
 
   //создание директории скрипта по заданному пути
@@ -72,7 +72,8 @@ export class ScriptCreator implements IScriptCreator {
     parentNode: ExternalDataNodeType | undefined = undefined
   ): Promise<string> {
     // проверяем наличие всех необходимых блоков
-    const allAvailableNodes = this.collections.reduce((allNodes: ExternalDataNodeType[], collection) => {
+    const collections = await this.handleGetCollections();
+    const allAvailableNodes = collections.reduce((allNodes: ExternalDataNodeType[], collection) => {
       return [
         ...allNodes,
         ...collection.nodes
