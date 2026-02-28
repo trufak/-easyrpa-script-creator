@@ -711,10 +711,10 @@ export type ExternalDataDefaultFlowType = {
 export type ContentValuesType = { [key: string]: string | number | { [key: string]: string | number } | (string | number)[]};
 
 export type ExternalDataEdgeType = {
-  target: string;
+  target: string | number;
   targetCid: string;
   targetHandle?: string;
-  source: string;
+  source: string | number;
   sourceCid: string;
   sourceHandle?: string;
   isReplacement: boolean;
