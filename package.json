@@ -1,7 +1,7 @@
 {
   "name": "@easyrpa/script-creator",
   "description": "Pyton script creator for easy rpa",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

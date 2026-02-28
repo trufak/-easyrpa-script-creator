@@ -692,7 +692,7 @@ export type ExternalDataNodeType = {
   type: NodeTypes;
   path: string;
   scriptPath: string;
-  id: string;
+  id: string | number;
   inputHandles: ExternalDataHandleType[];
   outputHandles: ExternalDataHandleType[];
   stateTerminals: ExternalDataStateTerminalType[];
