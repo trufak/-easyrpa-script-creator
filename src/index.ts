@@ -509,7 +509,7 @@ export class ScriptCreator implements IScriptCreator {
     if (foundNode) {
       foundNode.scriptLineNumber = resultArray.length;
     }
-    this.isDebugMode &&
+    this.isDebugMode && this.logDebugVariablesPath &&
       resultArray.push(
         `\tlog_debug_variables(${this.variablesNames.nodesVariableName})`
       );
@@ -626,7 +626,7 @@ export class ScriptCreator implements IScriptCreator {
       this.createCallNodeFunction(node, nodes, resultArray, parentNode);
     });
     //запись файла с переменными для режима Run
-    this.isRunMode &&
+    this.isRunMode && this.logDebugVariablesPath &&
       resultArray.push(
         `\tlog_debug_variables(${this.variablesNames.nodesVariableName})`
       );
