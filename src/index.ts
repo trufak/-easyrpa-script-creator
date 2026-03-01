@@ -701,6 +701,7 @@ export type ExternalDataNodeType = {
   children?: ExternalDataNodeType[];
   dataSubFlow?: ExternalDataDefaultFlowType;
   scriptLineNumber?: number;
+  isBreakPoint: boolean;
 };
 
 export type ExternalDataDefaultFlowType = {
