@@ -13,7 +13,7 @@
     "url": "git+https://github.com/trufak/-easyrpa-script-creator.git"
   },
   "author": "trufak",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/trufak/-easyrpa-script-creator/issues"
   },
