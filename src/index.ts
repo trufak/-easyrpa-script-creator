@@ -16,6 +16,7 @@ export type ScriptCreatorConfig = {
   isDebugMode?: boolean;
   isRunMode?: boolean;
   variablesNames?: Partial<VariablesNamesType>;
+  defaultScriptName?: string;
 }
 
 export class ScriptCreator implements IScriptCreator {
@@ -24,6 +25,7 @@ export class ScriptCreator implements IScriptCreator {
   isRunMode?: boolean;
   variablesNames: VariablesNamesType;
   logDebugVariablesPath?: string;
+  defaultScriptName: string;
   handleGetCollections: ()=>Promise<CollectionType[]>;  
 
   constructor(
@@ -40,9 +42,9 @@ export class ScriptCreator implements IScriptCreator {
       nodesJsonVariableName: "nodes_pickle",
       inputDictName: "input_dict",
       inHandlesName: "in_handles",
-      defaultScriptName: "script.py",
       ...(config?.variablesNames || {}),
     };
+    this.defaultScriptName = config?.defaultScriptName || 'script.py';
     this.handleGetCollections = handleGetCollections;
   }
 
@@ -118,7 +120,7 @@ export class ScriptCreator implements IScriptCreator {
     );
     const scriptPath: string = path.join(
       dirPath,
-      this.variablesNames.defaultScriptName
+      this.defaultScriptName
     );
     await fsPromises.writeFile(scriptPath, scriptStr);
 
@@ -595,7 +597,7 @@ export class ScriptCreator implements IScriptCreator {
       .map(
         (subFlow) =>
           `from ${subFlow.name}_${subFlow.cid}.${path.basename(
-            this.variablesNames.defaultScriptName || "script",
+            this.defaultScriptName,
             ".py"
           )} import main as main_${subFlow.name}_${subFlow.cid}`
       );
@@ -761,7 +763,6 @@ export type VariablesNamesType = {
   nodesJsonVariableName: string;
   inputDictName: string;
   inHandlesName: string;
-  defaultScriptName: string;
 }
 
 //тии мета-данных
